@@ -242,6 +242,12 @@
             <!-- SEO header -->
             <h1 style="display: none">Prometheus_钉钉群ding某人和应用分组报警</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：星期五, 五月 28日 2021, 1:48 下午
+                
+              </p>
+            
             <div class="markdown-body">
               <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>公司这边主要是通过Prometheus来进行监控的，告警媒介主要是通过webhook在钉钉群中完成告警。<br>但是现在的告警信息只能知道有异常，不能快速定位，而且报警信息过多的话，很容易遗漏，不能根据报警信息找到对应的人员，因此想通过告警来自动完成ding某人的操作。<br>之前的报警信息如下，采用markdown类型，只能知道机器和端口,需要根据端口去找对应的进程，而进程名称和文件夹名称不对应，像我这种刚接触这种环境的，就比较痛苦（图片外链比较麻烦，base64串太长了此处就用文本展示了）。</p>
 <figure class="highlight vhdl"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vhdl">监控告警-服务异常<br>Prometheus恢复信息<br>告警级别：提示<br>开始时间：<span class="hljs-built_in">time</span><br>结束时间：<span class="hljs-built_in">time</span><br>故障主机IP：ip:<span class="hljs-keyword">port</span><br>ip:<span class="hljs-keyword">port</span>:tomcat_jvm服务异常,已恢复!<br></code></pre></div></td></tr></table></figure>
@@ -354,24 +360,23 @@
                   
                 
                 
-  <div class="disqus" style="width:100%">
-    <div id="disqus_thread"></div>
-    
-      <script type="text/javascript">
-        var disqus_config = function() {
-          this.page.url = 'https://shanzhi7.github.io/2021/04/08/Prometheus_%E9%92%89%E9%92%89%E7%BE%A4ding%E6%9F%90%E4%BA%BA%E5%92%8C%E5%BA%94%E7%94%A8%E5%88%86%E7%BB%84%E6%8A%A5%E8%AD%A6/';
-          this.page.identifier = '/2021/04/08/Prometheus_%E9%92%89%E9%92%89%E7%BE%A4ding%E6%9F%90%E4%BA%BA%E5%92%8C%E5%BA%94%E7%94%A8%E5%88%86%E7%BB%84%E6%8A%A5%E8%AD%A6/';
-        };
-        Fluid.utils.loadComments('#disqus_thread', function() {
-          var d = document, s = d.createElement('script');
-          s.src = '//' + 'gitalk' + '.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', new Date());
-          (d.head || d.body).appendChild(s);
-        });
-      </script>
-    
-    <noscript>Please enable JavaScript to view the comments</noscript>
-  </div>
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"cc94a2949c46701e0a87","clientSecret":"1a63d992b6bbd03dfc9d26d648ab4b338c6ca40f","repo":"shanzhi7.github.io","owner":"shanzhi7","admin":["shanzhi7"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"first","distractionFreeMode":true,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '0d957c3bd58099cdd0e9c9ee3c82876b'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
 
 
               </article>
@@ -433,6 +438,37 @@
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+	    <div>
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+      <script>
+      var now = new Date();
+      function createtime(){
+          var grt= new Date("10/05/2020 00:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24;
+          dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+          hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){
+              hnum = "0" + hnum;
+          }
+          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes);
+          if(String(mnum).length ==1 ){
+                    mnum = "0" + mnum;
+          }
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds);
+          if(String(snum).length ==1 ){
+                    snum = "0" + snum;
+          }
+          document.getElementById("timeDate").innerHTML = "🚀 &nbsp"+dnum+"&nbsp天";  //此次自定义显示内容
+          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+      }  //此次自定义显示内容
+      setInterval("createtime()",250);
+      </script>
+    </div>
   </div>
   
   <div class="statistics">

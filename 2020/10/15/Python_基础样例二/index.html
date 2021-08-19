@@ -242,6 +242,12 @@
             <!-- SEO header -->
             <h1 style="display: none">Python_基础样例二</h1>
             
+              <p class="note note-info">
+                
+                  本文最后更新于：星期五, 五月 28日 2021, 1:47 下午
+                
+              </p>
+            
             <div class="markdown-body">
               <h3 id="基本数值统计"><a href="#基本数值统计" class="headerlink" title="基本数值统计"></a>基本数值统计</h3><figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-string">def</span> <span class="hljs-string">getNum():</span>  <span class="hljs-comment"># 获取用户不定长度的输入</span><br>    <span class="hljs-string">numbers</span> <span class="hljs-string">=</span> <span class="hljs-string">eval(input())</span><br>    <span class="hljs-string">return</span> <span class="hljs-string">numbers</span><br><br><span class="hljs-string">def</span> <span class="hljs-string">mean(numbers):</span>  <span class="hljs-comment"># 计算平均值</span><br>    <span class="hljs-string">sum</span> <span class="hljs-string">=</span> <span class="hljs-number">0</span><br>    <span class="hljs-attr">for i in numbers:</span><br>        <span class="hljs-string">sum</span> <span class="hljs-string">+=</span> <span class="hljs-string">i</span><br>    <span class="hljs-string">return</span> <span class="hljs-string">sum/len(numbers)</span><br><br><span class="hljs-string">def</span> <span class="hljs-string">dev(numbers,</span> <span class="hljs-string">mean):</span>  <span class="hljs-comment"># 计算标准差</span><br>    <span class="hljs-string">sdev</span> <span class="hljs-string">=</span> <span class="hljs-number">0.0</span><br>    <span class="hljs-attr">for num in numbers:</span><br>        <span class="hljs-string">sdev</span> <span class="hljs-string">=</span> <span class="hljs-string">sdev</span> <span class="hljs-string">+</span> <span class="hljs-string">(num</span> <span class="hljs-bullet">-</span> <span class="hljs-string">mean)</span> <span class="hljs-string">**</span> <span class="hljs-number">2</span><br>    <span class="hljs-string">return</span> <span class="hljs-string">pow(sdev</span> <span class="hljs-string">/</span> <span class="hljs-string">(len(numbers)</span> <span class="hljs-bullet">-</span> <span class="hljs-number">1</span><span class="hljs-string">),</span> <span class="hljs-number">0.5</span><span class="hljs-string">)</span><br>    <br><span class="hljs-string">def</span> <span class="hljs-string">median(numbers):</span>  <span class="hljs-comment"># 计算中位数</span><br>    <span class="hljs-string">nlist</span> <span class="hljs-string">=</span> <span class="hljs-string">sorted(list(numbers))</span><br>    <span class="hljs-string">if</span> <span class="hljs-string">len(nlist)</span> <span class="hljs-string">%</span> <span class="hljs-number">2</span> <span class="hljs-string">==</span> <span class="hljs-attr">0:</span><br>        <span class="hljs-string">return</span> <span class="hljs-string">(nlist[len(nlist)//2</span> <span class="hljs-bullet">-</span> <span class="hljs-number">1</span><span class="hljs-string">]</span> <span class="hljs-string">+</span> <span class="hljs-string">nlist[len(nlist)//2])/2</span><br>    <span class="hljs-attr">else:</span><br>        <span class="hljs-string">return</span> <span class="hljs-string">nlist[len(nlist)//2]</span><br>        <br><span class="hljs-string">n</span> <span class="hljs-string">=</span> <span class="hljs-string">getNum()</span>  <span class="hljs-comment"># 主体函数</span><br><span class="hljs-string">m</span> <span class="hljs-string">=</span> <span class="hljs-string">mean(n)</span><br><span class="hljs-string">print(&quot;平均值:&#123;:.2f&#125;,标准差:&#123;:.2f&#125;,中位数:&#123;&#125;&quot;.format(m,dev(n,m),median(list(n))))</span><br></code></pre></div></td></tr></table></figure>
 
@@ -306,24 +312,23 @@
                   
                 
                 
-  <div class="disqus" style="width:100%">
-    <div id="disqus_thread"></div>
-    
-      <script type="text/javascript">
-        var disqus_config = function() {
-          this.page.url = 'https://shanzhi7.github.io/2020/10/15/Python_%E5%9F%BA%E7%A1%80%E6%A0%B7%E4%BE%8B%E4%BA%8C/';
-          this.page.identifier = '/2020/10/15/Python_%E5%9F%BA%E7%A1%80%E6%A0%B7%E4%BE%8B%E4%BA%8C/';
-        };
-        Fluid.utils.loadComments('#disqus_thread', function() {
-          var d = document, s = d.createElement('script');
-          s.src = '//' + 'gitalk' + '.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', new Date());
-          (d.head || d.body).appendChild(s);
-        });
-      </script>
-    
-    <noscript>Please enable JavaScript to view the comments</noscript>
-  </div>
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"cc94a2949c46701e0a87","clientSecret":"1a63d992b6bbd03dfc9d26d648ab4b338c6ca40f","repo":"shanzhi7.github.io","owner":"shanzhi7","admin":["shanzhi7"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"first","distractionFreeMode":true,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: 'a7541ae8d91d79df98ff51dc945acd07'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
 
 
               </article>
@@ -385,6 +390,37 @@
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+	    <div>
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+      <script>
+      var now = new Date();
+      function createtime(){
+          var grt= new Date("10/05/2020 00:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24;
+          dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+          hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){
+              hnum = "0" + hnum;
+          }
+          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes);
+          if(String(mnum).length ==1 ){
+                    mnum = "0" + mnum;
+          }
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds);
+          if(String(snum).length ==1 ){
+                    snum = "0" + snum;
+          }
+          document.getElementById("timeDate").innerHTML = "🚀 &nbsp"+dnum+"&nbsp天";  //此次自定义显示内容
+          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+      }  //此次自定义显示内容
+      setInterval("createtime()",250);
+      </script>
+    </div>
   </div>
   
   <div class="statistics">
